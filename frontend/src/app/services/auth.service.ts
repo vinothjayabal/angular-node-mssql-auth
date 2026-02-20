@@ -21,7 +21,7 @@ export interface LoginCredentials {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/api'; // Adjust based on your backend
+  private apiUrl = 'http://localhost:4000/api'; // Adjust based on your backend
   private currentUserSubject = new BehaviorSubject<any>(this.getUserFromStorage());
   public currentUser$ = this.currentUserSubject.asObservable();
 
