@@ -1,0 +1,105 @@
+<div class="registration-container">
+  <p-toast position="top-right"></p-toast>
+
+  <p-card class="registration-card">
+    <ng-template pTemplate="header">
+      <div class="card-header">
+        <h1>Create Account</h1>
+      </div>
+    </ng-template>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="registration-form">
+      <!-- Username Field -->
+      <div class="form-group">
+        <label for="username" class="field-label">Username</label>
+        <input
+          pInputText
+          id="username"
+          type="text"
+          formControlName="username"
+          class="w-full"
+          placeholder="Enter username"
+          [class.ng-invalid]="submitted && f['username'].errors"
+        />
+        <small class="form-error" *ngIf="submitted && f['username'].errors?.['required']">
+          Username is required
+        </small>
+      </div>
+
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email" class="field-label">Email Address</label>
+        <input
+          pInputText
+          id="email"
+          type="email"
+          formControlName="email"
+          class="w-full"
+          placeholder="Enter email address"
+          [class.ng-invalid]="submitted && f['email'].errors"
+        />
+        <small class="form-error" *ngIf="submitted && f['email'].errors?.['required']">
+          Email is required
+        </small>
+        <small class="form-error" *ngIf="submitted && f['email'].errors?.['email']">
+          Please enter a valid email address
+        </small>
+      </div>
+
+      <!-- Phone Field -->
+      <div class="form-group">
+        <label for="phone" class="field-label">Phone Number</label>
+        <input
+          pInputText
+          id="phone"
+          type="tel"
+          formControlName="phone"
+          class="w-full"
+          placeholder="Enter 10-digit phone number"
+          [class.ng-invalid]="submitted && f['phone'].errors"
+        />
+        <small class="form-error" *ngIf="submitted && f['phone'].errors?.['required']">
+          Phone number is required
+        </small>
+        <small class="form-error" *ngIf="submitted && f['phone'].errors?.['pattern']">
+          Phone number must be 10 digits
+        </small>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password" class="field-label">Password</label>
+        <p-password
+          id="password"
+          formControlName="password"
+          placeholder="Enter password (min 6 characters)"
+          [toggleMask]="true"
+          styleClass="w-full"
+          [class.ng-invalid]="submitted && f['password'].errors"
+        ></p-password>
+        <small class="form-error" *ngIf="submitted && f['password'].errors?.['required']">
+          Password is required
+        </small>
+        <small class="form-error" *ngIf="submitted && f['password'].errors?.['minlength']">
+          Password must be at least 6 characters
+        </small>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <p-button
+          label="Register"
+          [loading]="loading"
+          [disabled]="loading"
+          type="submit"
+          icon="pi pi-user-plus"
+          class="w-full"
+        ></p-button>
+      </div>
+
+      <div class="login-link">
+        <p>Already have an account? <a (click)="goToLogin()">Login here</a></p>
+      </div>
+    </form>
+  </p-card>
+</div>

@@ -1,0 +1,43 @@
+<div class="home-container">
+  <p-card class="home-card">
+    <ng-template pTemplate="header">
+      <div class="card-header">
+        <h1>Dashboard</h1>
+        <p-button
+          label="Logout"
+          icon="pi pi-sign-out"
+          [text]="true"
+          severity="danger"
+          (click)="logout()"
+          class="logout-btn"
+        ></p-button>
+      </div>
+    </ng-template>
+
+    <div class="welcome-section">
+      <h2>Welcome, {{ currentUser?.username || 'User' }}!</h2>
+      <p>You have successfully logged in to your account.</p>
+    </div>
+
+    <p-panel header="Your Information" styleClass="mb-3">
+      <div class="user-info">
+        <div class="info-item">
+          <label>Username:</label>
+          <span>{{ currentUser?.username }}</span>
+        </div>
+        <div class="info-item">
+          <label>Email:</label>
+          <span>{{ currentUser?.email }}</span>
+        </div>
+        <div class="info-item">
+          <label>Phone:</label>
+          <span>{{ currentUser?.phone }}</span>
+        </div>
+      </div>
+    </p-panel>
+
+    <div class="action-section">
+      <p>You are now logged in and can access all the features of the application.</p>
+    </div>
+  </p-card>
+</div>
